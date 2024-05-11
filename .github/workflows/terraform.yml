@@ -93,4 +93,4 @@ jobs:
       run: terraform apply -auto-approve tfplan
 
     - name: check tfstate
-      run: ls
+      run: cat terraform.tfstate
