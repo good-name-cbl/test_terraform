@@ -97,6 +97,7 @@ jobs:
 
     - name: Commit tfstate file
       run: |
+        ls
         git config --global user.email "makkan0424@gmail.com"
         git config --global user.name "good-name-cbl"
         git add terraform.tfstate
