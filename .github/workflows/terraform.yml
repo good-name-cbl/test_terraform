@@ -92,8 +92,18 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve tfplan
 
-    - name: Move tfstate file
-      run: cat terraform.tfstate
+    - name: Generate token
+        id: generate_token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+    - name: Use token
+        env:
+          TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          echo "The generated token is masked: ${TOKEN}"
 
     # - name: Commit tfstate file
     #   run: |
