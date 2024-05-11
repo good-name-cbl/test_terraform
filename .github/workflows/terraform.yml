@@ -51,7 +51,7 @@ on:
       - '.github/workflows/terraform.yml'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   terraform:
@@ -114,4 +114,4 @@ jobs:
         git remote add origin_with_app https://github.com/good-name-cbl/test_terraform.git
         git push origin_with_app main
       env:
-        GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        TOKEN: ${{ steps.generate_token.outputs.token }}
