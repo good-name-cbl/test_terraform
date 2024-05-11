@@ -92,5 +92,13 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve tfplan
 
-    - name: check tfstate
-      run: cat terraform.tfstate
+    - name: Move tfstate file
+      run: mv terraform.tfstate $GITHUB_WORKSPACE/terraform.tfstate
+
+    - name: Commit tfstate file
+      run: |
+        git config --global user.email "makkan0424@gmail.com"
+        git config --global user.name "good-name-cbl"
+        git add terraform.tfstate
+        git commit -m "Update tfstate file"
+        git push origin main
