@@ -92,8 +92,8 @@ jobs:
     - name: Terraform Apply
       run: terraform apply -auto-approve tfplan
 
-    - name: Move tfstate file
-      run: mv -f terraform.tfstate $GITHUB_WORKSPACE/terraform.tfstate
+    # - name: Move tfstate file
+    #   run: mv -f terraform.tfstate $GITHUB_WORKSPACE/terraform.tfstate
 
     - name: Commit tfstate file
       run: |
