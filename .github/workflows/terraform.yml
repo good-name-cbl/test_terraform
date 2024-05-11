@@ -99,17 +99,19 @@ jobs:
         app-id: ${{ secrets.APP_ID }}
         private_key: ${{ secrets.PRIVATE_KEY }}
 
-    - name: Use token
-      env:
-        TOKEN: ${{ steps.generate_token.outputs.token }}
-      run: |
-        echo "The generated token is masked: ${TOKEN}"
+    # - name: Use token
+    #   env:
+    #     TOKEN: ${{ steps.generate_token.outputs.token }}
+    #   run: |
+    #     echo "The generated token is masked: ${TOKEN}"
 
     # - name: Commit tfstate file
-    #   run: |
-    #     git config --global credential.helper 'store --file ~/.git-credentials' && echo "https://${{ secrets.USER_NAME }}:${{ secrets.USER_TOKEN }}@github.com" >> ~/.git-credentials
-    #     git config --global user.email "makkan0424@gmail.com"
-    #     git config --global user.name "good-name-cbl"
-    #     git add terraform.tfstate
-    #     git commit -m "Update tfstate file"
-    #     git push origin main
+      run: |
+        git config --global user.email "makkan0424@gmail.com"
+        git config --global user.name "good-name-cbl"
+        git add terraform.tfstate
+        git commit -m "Update tfstate file"
+        git remote add origin_with_app https://github.com/good-name-cbl/test_terraform.git
+        git push origin_with_app main
+      env:
+        GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
