@@ -48,7 +48,7 @@ on:
   push:
     branches: [ "main" ]
       paths:
-      - '.github/workflows/terraform.yml'
+        - '.github/workflows/terraform.yml'
 
 permissions:
   contents: read
