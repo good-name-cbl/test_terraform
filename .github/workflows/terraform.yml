@@ -97,8 +97,6 @@ jobs:
 
     - name: Commit tfstate file
       run: |
-        echo secrets.USER_NAME > name.txt
-        cat name.txt
         git config --global credential.helper 'store --file ~/.git-credentials' && echo "https://${{ secrets.USER_NAME }}:${{ secrets.USER_TOKEN }}@github.com" >> ~/.git-credentials
         git config --global user.email "makkan0424@gmail.com"
         git config --global user.name "good-name-cbl"
