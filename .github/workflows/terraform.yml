@@ -111,13 +111,21 @@ jobs:
         git config --global user.email "makkan0424@gmail.com"
         git config --global user.name "good-name-cbl"
 
+      # ブランチ作成
         git checkout -b test
         git branch -a
         touch add.txt
         tree
+
+      # 新規ブランチでコミットテスト
         git add add.txt
         git commit -m "branch add test"
         git push -u origin test
+
+      # ブランチ削除
+        git checkout -b main
+        git push origin --delete test
+        git branch -a
 
         # git add test/terraform.tfstate
         # git commit -m "Update tfstate file"
