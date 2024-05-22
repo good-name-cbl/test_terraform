@@ -133,4 +133,5 @@ jobs:
         # git push origin_with_app main
       env:
         TOKEN: ${{ steps.generate_token.outputs.token }}
+        GH_TOKEN: ${{ steps.generate_token.outputs.token }}
         HEAD_MESSAGE: ${{ github.event.head_commit.message }}
