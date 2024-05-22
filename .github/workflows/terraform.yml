@@ -113,9 +113,10 @@ jobs:
 
         git checkout -b test
         git branch -a
+        touch add.txt
 
-        git add test/terraform.tfstate
-        git commit -m "Update tfstate file"
+        git add add.txt
+        git commit -m "create add.txt"
         git push -u origin test
 
         COMMIT_MESSAGE=$(echo "${HEAD_MESSAGE}" | sed -n -e 1p)
