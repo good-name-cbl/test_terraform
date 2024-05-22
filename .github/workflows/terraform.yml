@@ -120,7 +120,7 @@ jobs:
         git commit -m "branch add test"
         git push -u origin test
 
-        git checkout -b main
+        git checkout main
         git push origin --delete test
         git branch -a
 
