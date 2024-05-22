@@ -113,15 +113,16 @@ jobs:
 
         git checkout -b test
         git branch -a
-        tree
+        ls -a
+        ls test -a
 
         git add test/terraform.tfstate
         git commit -m "Update tfstate file"
         git push -u origin test
 
-        # git checkout main
-        # git push origin --delete test
-        # git branch -a
+        git checkout main
+        git push origin --delete test
+        git branch -a
 
         # git add test/terraform.tfstate
         # git commit -m "Update tfstate file"
