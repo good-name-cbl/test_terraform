@@ -110,9 +110,13 @@ jobs:
         pwd
         git config --global user.email "makkan0424@gmail.com"
         git config --global user.name "good-name-cbl"
-        git add test/terraform.tfstate
-        git commit -m "Update tfstate file"
-        git remote add origin_with_app https://github.com/good-name-cbl/test_terraform.git
-        git push origin_with_app main
+
+        git checkout -b test
+        git branch -a
+
+        # git add test/terraform.tfstate
+        # git commit -m "Update tfstate file"
+        # git remote add origin_with_app https://github.com/good-name-cbl/test_terraform.git
+        # git push origin_with_app main
       env:
         TOKEN: ${{ steps.generate_token.outputs.token }}
