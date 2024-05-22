@@ -113,7 +113,7 @@ jobs:
 
         git checkout -b test
         git branch -a
-        ls
+        tree
 
         # git add test/terraform.tfstate
         # git commit -m "Update tfstate file"
