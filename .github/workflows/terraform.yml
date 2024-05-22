@@ -113,7 +113,11 @@ jobs:
 
         git checkout -b test
         git branch -a
+        touch add.txt
         tree
+        git add add.txt
+        git commit -m "branch add test"
+        git push -u origin test
 
         # git add test/terraform.tfstate
         # git commit -m "Update tfstate file"
