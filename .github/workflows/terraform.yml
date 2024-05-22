@@ -73,7 +73,7 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
-        terraform_version: 1.7.0
+        terraform_version: 1.6.0
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
@@ -113,12 +113,14 @@ jobs:
 
         git checkout -b test
         git branch -a
-        ls -a
-        ls test -a
 
         git add test/terraform.tfstate
         git commit -m "Update tfstate file"
         git push -u origin test
+
+        COMMIT_MESSAGE=$(echo "${HEAD_MESSAGE}" | sed -n -e 1p)
+        echo "message=${COMMIT_MESSAGE}" >> "$GITHUB_OUTPUT"
+        echo "count=$(gh pr list -S '本番反映'in:title | wc -l)" >> "$GITHUB_OUTPUT"
 
         git checkout main
         git push origin --delete test
@@ -130,3 +132,4 @@ jobs:
         # git push origin_with_app main
       env:
         TOKEN: ${{ steps.generate_token.outputs.token }}
+        HEAD_MESSAGE: ${{ github.event.head_commit.message }}
